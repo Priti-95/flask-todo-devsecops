@@ -48,6 +48,7 @@ def delete(todo_id):
 def health():
     return 'Server is up and running', 200
 
+
 if __name__ == '__main__':
     init_db()
     app.run(host='0.0.0.0', port=5000)
