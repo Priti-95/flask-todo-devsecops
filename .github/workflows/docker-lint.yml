@@ -1,0 +1,16 @@
+name: Docker Lint
+
+on:
+  workflow_call:
+
+jobs:
+  docker-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Hadolint (Dockerfile Lint)
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: Dockerfile
+          failure-threshold: error
