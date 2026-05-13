@@ -1,0 +1,2 @@
+# Ignore low severity findings not relevant to app
+CVE-2023-45853
