@@ -4,6 +4,7 @@ import sqlite3
 app = Flask(__name__)
 DB = 'todos.db'
 
+
 def init_db():
     with sqlite3.connect(DB) as conn:
         conn.execute('''CREATE TABLE IF NOT EXISTS todos (
@@ -12,11 +13,13 @@ def init_db():
             done BOOLEAN DEFAULT 0
         )''')
 
+
 @app.route('/')
 def index():
     with sqlite3.connect(DB) as conn:
         todos = conn.execute('SELECT * FROM todos').fetchall()
     return render_template('index.html', todos=todos)
+
 
 @app.route('/add', methods=['POST'])
 def add():
@@ -26,17 +29,20 @@ def add():
             conn.execute('INSERT INTO todos (task) VALUES (?)', (task,))
     return redirect(url_for('index'))
 
+
 @app.route('/complete/<int:todo_id>')
 def complete(todo_id):
     with sqlite3.connect(DB) as conn:
         conn.execute('UPDATE todos SET done=1 WHERE id=?', (todo_id,))
     return redirect(url_for('index'))
 
+
 @app.route('/delete/<int:todo_id>')
 def delete(todo_id):
     with sqlite3.connect(DB) as conn:
         conn.execute('DELETE FROM todos WHERE id=?', (todo_id,))
     return redirect(url_for('index'))
+
 
 @app.route('/health')
 def health():
