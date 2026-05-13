@@ -7,6 +7,9 @@ jobs:
   image-scan:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        
       - name: Run Trivy Image Scan
         uses: aquasecurity/trivy-action@master
         with:
@@ -14,3 +17,4 @@ jobs:
           format: table
           exit-code: '1'
           severity: CRITICAL,HIGH
+          trivyignores: .trivyignore
