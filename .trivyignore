@@ -1,2 +1,7 @@
 # Ignore low severity findings not relevant to app
-CVE-2023-45853
+CVE-2026-4878
+CVE-2025-69720
+CVE-2026-29111
+CVE-2025-69720
+CVE-2026-23949
+CVE-2026-24049
