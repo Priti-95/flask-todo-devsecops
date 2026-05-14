@@ -13,6 +13,8 @@ def init_db():
             done BOOLEAN DEFAULT 0
         )''')
 
+init_db()
+
 
 @app.route('/')
 def index():
